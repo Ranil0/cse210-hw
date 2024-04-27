@@ -15,14 +15,14 @@ class Program
             string userResponse = Console.ReadLine();
             userNumber = int.Parse(userResponse);
             
-            // Only add the number to the list if it is not 0
+            
             if (userNumber != 0)
             {
                 numbers.Add(userNumber);
             }
         }
 
-        // Part 1: Compute the sum
+        
         int sum = 0;
         foreach (int number in numbers)
         {
