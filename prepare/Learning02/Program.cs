@@ -1,27 +1,86 @@
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Job job1 = new Job();
-        job1._jobTitle = "Software Engineer";
-        job1._company = "Microsoft";
-        job1._startYear = 2019;
-        job1._endYear = 2022;
+        Console.WriteLine("Hello, Welcome to the Journal program!");
 
-        Job job2 = new Job();
-        job2._jobTitle = "Manager";
-        job2._company = "Apple";
-        job2._startYear = 2022;
-        job2._endYear = 2023;
+        List<Tuple<DateTime, string>> journalEntries = new List<Tuple<DateTime, string>>();
 
-        Resume myResume = new Resume();
-        myResume._name = "Allison Rose";
+        bool running = true;
 
-        myResume._jobs.Add(job1);
-        myResume._jobs.Add(job2);
+        while (running)
+        {
+            Console.WriteLine("\nPlease select one of the following choices:");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Load");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Quit");
 
-        myResume.Display();
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.Write("Enter your journal entry: ");
+                    string entry = Console.ReadLine();
+                    journalEntries.Add(new Tuple<DateTime, string>(DateTime.Now, entry));
+                    Console.WriteLine("Entry added successfully!");
+                    break;
+                case "2":
+                    Console.WriteLine("\nJournal Entries:");
+                    foreach (var journalEntry in journalEntries)
+                    {
+                        Console.WriteLine($"{journalEntry.Item1}: {journalEntry.Item2}");
+                    }
+                    break;
+                case "3":
+                    Console.Write("Enter the file path to load: ");
+                    string filePathLoad = Console.ReadLine();
+                    if (File.Exists(filePathLoad))
+                    {
+                        journalEntries = new List<Tuple<DateTime, string>>();
+                        string[] lines = File.ReadAllLines(filePathLoad);
+                        foreach (var line in lines)
+                        {
+                            string[] parts = line.Split('|');
+                            if (parts.Length == 2 && DateTime.TryParse(parts[0], out DateTime date))
+                            {
+                                journalEntries.Add(new Tuple<DateTime, string>(date, parts[1]));
+                            }
+                        }
+                        Console.WriteLine("Entries loaded successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("File not found!");
+                    }
+                    break;
+                case "4":
+                    Console.Write("Enter the file path to save: ");
+                    string filePathSave = Console.ReadLine();
+                    List<string> linesToSave = new List<string>();
+                    foreach (var journalEntry in journalEntries)
+                    {
+                        linesToSave.Add($"{journalEntry.Item1}|{journalEntry.Item2}");
+                    }
+                    File.WriteAllLines(filePathSave, linesToSave);
+                    Console.WriteLine("Entries saved successfully!");
+                    break;
+                case "5":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
+                    break;
+            }
+        }
+
+        Console.WriteLine("Thank you for using the Journal program!");
     }
 }
