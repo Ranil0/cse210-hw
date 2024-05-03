@@ -51,7 +51,7 @@ class Program
                 //Quit
                 case 5:
                     running = false;
-                    Console.WriteLine("Thank you. Have a nice day!");
+                    Console.WriteLine("Thank you for using our Journal Program!");
                     Console.WriteLine();
                     break;
                 default:
