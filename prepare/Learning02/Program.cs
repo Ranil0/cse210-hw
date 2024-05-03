@@ -55,7 +55,7 @@ class Program
                     Console.WriteLine();
                     break;
                 default:
-                    Console.WriteLine("Invalid input. Please choose one of the following choices.");
+                    Console.WriteLine("Invalid input. Please choose from 1-5 only.");
                     break;
             }
         }
