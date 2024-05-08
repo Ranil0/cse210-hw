@@ -2,33 +2,33 @@ using System;
 
 public class Fraction
 {
-  private int _numer;
-  private int _denom;
+  private int _top;
+  private int _bottom;
 
   public Fraction()
   {
-    _numer = 1;
-    _denom = 1;
+    _top = 1;
+    _bottom = 1;
   }
   public Fraction(int wholeNumber)
   {
-    _numer = wholeNumber;
-    _denom = 1;
+    _top = wholeNumber;
+    _bottom = 1;
   }
 
-  public Fraction(int numer, int denom )
+  public Fraction(int top, int bottom )
   {
-    _numer = numer;
-    _denom = denom;
+    _top = top;
+    _bottom = bottom;
   }
 
   public string GetFractionString()
   {
-    String text = $"{_numer}/{_denom}";
+    String text = $"{_top}/{_bottom}";
     return text;
   }
   public double GetDecimalValue()
   {
-    return (double)_numer / (double)_denom;
+    return (double)_top / (double)_bottom;
   }
 }
