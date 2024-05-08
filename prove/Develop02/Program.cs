@@ -10,10 +10,10 @@ class Program
     while (isRunning)
     {
       Console.WriteLine("\nJournal App Menu:");
-      Console.WriteLine("1. Write a new entry");
-      Console.WriteLine("2. Display the journal");
-      Console.WriteLine("3. Save the journal to a file");
-      Console.WriteLine("4. Load the journal from a file");
+      Console.WriteLine("1. Write");
+      Console.WriteLine("2. Display");
+      Console.WriteLine("3. Save");
+      Console.WriteLine("4. Load");
       Console.WriteLine("5. Exit");
 
       Console.Write("Select an option (1-5): ");
