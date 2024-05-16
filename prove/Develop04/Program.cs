@@ -33,8 +33,7 @@ class Program
             {
                 Console.WriteLine("Invalid choice. Try again");
             }
-            while (choice != "4");
-            
         }
+        while (choice != "4");
     }
 }
