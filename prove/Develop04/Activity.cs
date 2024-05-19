@@ -1,40 +1,44 @@
-public class Activity {
+using System;
+using System.Threading;
+using System.Collections.Generic;
+public abstract class Activity
+{
+    protected int _duration;
+    protected string _name;
+    protected string _description;
+    public Activity(string name, string description, int duration)
+    {
+        _name = name;
+        _description = description;
+        _duration = duration;
+    }
 
-  protected string _name;
-  protected string _description;
-  protected int _duration;
-  
-  public Activity() {
-      // Initialize _name, _description, and _duration
-      _name = "";
-      _description = "";
-      _duration = 0;
+    public void StartingActivity()
+    {
+        Console.WriteLine($"Prepare to begin {_name} activity: {_description}");
+        Thread.Sleep(3000);
+        for (int i = 1; i <= _duration; i++)
+        {
+            ShowPrompt(i);
+        }
+        EndActivity();
+    }
 
-  }
-
-  public void DisplayStartingMessage() {
-      //Console.Clear();
-      Console.WriteLine($"Wecome to the {_name}");
-      // Promp for the _duration
-      ShowSpinner(5);
-  }
-
-  public void DisplayEndingMessage() {
-      Console.WriteLine("Well done!!");
-      ShowSpinner(5);
-      //Console.Clear();
-  }
-
-  public void ShowSpinner(int seconds) {
-      // Video
-      Console.WriteLine("Spinner!");
-  }
-
-  public void ShowCountDown(int seconds) {
-      for (int i=1; i<=seconds; i++) {
-           Console.WriteLine(i);
-           Thread.Sleep(1000);
-      }
-      Console.WriteLine("Countdown!");
-  }
+    protected abstract void ShowPrompt(int index);
+    private void EndActivity()
+    {
+        Console.WriteLine("You've done a great job!");
+        Console.WriteLine($"You have completed the {_name} activity in {_duration} seconds.");
+        Thread.Sleep(3000);
+    }
+    protected void ShowAnimation()
+    {
+        Console.Write("Loading");
+        for (int i = 0; i < 3; i++)
+        {
+            Thread.Sleep(1000);
+            Console.Write(".");
+        }
+        Console.WriteLine();
+    }
 }
