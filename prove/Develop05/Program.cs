@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        Console.WriteLine("\nWelcome to the Eternal Goal Setting Quest App!\n");
+        GoalManager goalManager = new();
+        goalManager.Start();
     }
 }
