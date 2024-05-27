@@ -25,7 +25,7 @@ public class GoalManager
         do
         {
             DisplayPlayerPoint();
-            Console.WriteLine("\nMenu Options:")
+            Console.WriteLine("\nMenu Options:");
             Console.WriteLine(Menu);
             Console.Write("Select a choice from the menu: ");
             int userChoice = int.Parse(Console.ReadLine());
