@@ -9,7 +9,7 @@ public class GoalManager
 
     private int _count = 0;
 
-    private string _folderPath = "Goals/";
+    private string _folderPath = "saveFolder/";
 
     public GoalManager()
     {
@@ -153,11 +153,11 @@ public class GoalManager
         Console.Write("\nWhat would you like to name the file? : ");
         string fileName = Console.ReadLine();
 
-        using StreamWriter Goals = new($"{_folderPath}{fileName}.txt");
-        Goals.WriteLine(_score);
+        using StreamWriter saveFolder = new($"{_folderPath}{fileName}.txt");
+        saveFolder.WriteLine(_score);
         foreach (Goal goal in _goals)
         {
-            Goals.WriteLine(goal.GetStringRepresentation());
+            saveFolder.WriteLine(goal.GetStringRepresentation());
         }
         _goals.Clear();
         
