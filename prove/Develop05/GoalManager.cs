@@ -5,7 +5,7 @@ public class GoalManager
 
     private int _count = 0;
 
-    private string _folderPath = "Goals/";
+    private string _folderPath = "Develop05/";
 
     public GoalManager()
     {
@@ -147,11 +147,11 @@ public class GoalManager
     {
         Console.Write("\nWhat would you like to name the file? : ");
         string fileName = Console.ReadLine();
-        using StreamWriter Goals = new($"{_folderPath}{fileName}.txt");
-        Goals.WriteLine(_score);
+        using StreamWriter Develop05 = new($"{_folderPath}{fileName}.txt");
+        Develop05.WriteLine(_score);
         foreach (Goal goal in _goals)
         {
-            Goals.WriteLine(goal.GetStringRepresentation());
+            Develop05.WriteLine(goal.GetStringRepresentation());
         }
         _goals.Clear();
         
