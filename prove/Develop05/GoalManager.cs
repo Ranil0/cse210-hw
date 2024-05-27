@@ -20,7 +20,7 @@ public class GoalManager
     {
         
         string Menu = "\n1. Create New Goal  | 2. List Goals  | 3. Save Goals  | 4. Load Goals  | 5. Record Event  | 6. Quit\n";
-        bool isAppOn = true;
+        bool isMenuOn = true;
 
         do
         {
@@ -53,11 +53,11 @@ public class GoalManager
            }
            else if (userChoice == 6)
            {
-                isAppOn =false;
+                isMenuOn =false;
                 break;
            }
 
-        } while (isAppOn);
+        } while (isMenuOn);
     }
 
     private  void DisplayPlayerPoint()
@@ -138,8 +138,8 @@ public class GoalManager
         goalAccomplished.RecordEvent();
         _score += goalAccomplished.GetCurrentPoint();
 
-        string congratMessage = $"\nCongratulations! You have earned {goalAccomplished.GetSetPoint()}\nYou now have {_score} points";
-        Console.WriteLine(congratMessage);
+        string congratulatoryMessage = $"\nCongratulations! You have earned {goalAccomplished.GetSetPoint()}\nYou now have {_score} points";
+        Console.WriteLine(congratulatoryMessage);
         DisplayPlayerPoint();
     }
 
@@ -152,7 +152,8 @@ public class GoalManager
     {
         Console.Write("\nWhat would you like to name the file? : ");
         string fileName = Console.ReadLine();
-
+        Directory.CreateDirectory(_folderPath);
+        
         using StreamWriter saveFolder = new($"{_folderPath}{fileName}.txt");
         saveFolder.WriteLine(_score);
         foreach (Goal goal in _goals)
