@@ -1,6 +1,8 @@
+using System;
+
 public class CheckListGoal : Goal
 {
-    private string _GoalTypes;
+    private string _typeOfGoal;
     private int _amountCompleted = 0;
     private int _target;
     private int _bonus;
@@ -9,7 +11,7 @@ public class CheckListGoal : Goal
 
     public CheckListGoal(string name, string description, int points, string goal, int target, int bonus) : base(name, description, points)
     {
-        _GoalTypes = goal;
+        _typeOfGoal = goal;
         _target = target;
         _bonus = bonus;
     }
@@ -41,7 +43,7 @@ public class CheckListGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return $"{_GoalTypes}: {_shortName} | {_description} | {_setPoints} | {_bonus} | {_target} | {GetAmountCompleted()} | {IsComplete()}";
+        return $"{_typeOfGoal}: {_shortName} | {_description} | {_setPoints} | {_bonus} | {_target} | {GetAmountCompleted()} | {IsComplete()}";
     }
 
     public void SetAmountCompleted()

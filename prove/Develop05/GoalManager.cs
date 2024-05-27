@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 public class GoalManager
 {
     private List<Goal> _goals = new ();
@@ -14,13 +18,14 @@ public class GoalManager
 
     public void Start()
     {
-        string Menu = "\n1. Create New Goal  | 2. List Goals  | 3. Save Goals  | 4. Load Goals ♽ | 5. Record Event  | 6. Quit\n";
-        bool isMenuOn = true;
+        
+        string Menu = "\n1. Create New Goal  | 2. List Goals  | 3. Save Goals  | 4. Load Goals  | 5. Record Event  | 6. Quit\n";
+        bool isAppOn = true;
 
         do
         {
             DisplayPlayerPoint();
-            Console.WriteLine("\nMenu Options:");
+            Console.WriteLine("\nMenu Options:")
             Console.WriteLine(Menu);
             Console.Write("Select a choice from the menu: ");
             int userChoice = int.Parse(Console.ReadLine());
@@ -48,11 +53,11 @@ public class GoalManager
            }
            else if (userChoice == 6)
            {
-                isMenuOn =false;
+                isAppOn =false;
                 break;
            }
 
-        } while (isMenuOn);
+        } while (isAppOn);
     }
 
     private  void DisplayPlayerPoint()
@@ -73,7 +78,7 @@ public class GoalManager
         }
         else 
         {
-            Console.WriteLine("The list of goals is empty. You can load your saved goals or create a new one");
+            Console.WriteLine("The list of goals is empty. You can load your saved goals or create new ones");
         }
     }
 
@@ -90,7 +95,7 @@ public class GoalManager
         }
         else 
         {
-            Console.WriteLine("The list of goals is empty. You can load your saved goals or create a new one");
+            Console.WriteLine("The list of goals is empty. You can load your saved goals or create new ones");
         }
     }
 
@@ -99,21 +104,21 @@ public class GoalManager
         string[] goalTypes = {"Simple Goal", "Eternal Goals", "Checklist Goals"};
         Console.WriteLine($"\nThe types of goals are: 1. {goalTypes[0]} | 2. {goalTypes[1]} | 3. {goalTypes[2]}");
         Console.Write("\nWhat type of goal do you want create?: ");
-        int GoalTypes = int.Parse(Console.ReadLine()) - 1;
+        int typeOfGoal = int.Parse(Console.ReadLine()) - 1;
 
-        if (GoalTypes == 0)
+        if (typeOfGoal == 0)
         {
-            SimpleGoal simpleGoal = new(name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalTypes[GoalTypes]);
+            SimpleGoal simpleGoal = new(name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalTypes[typeOfGoal]);
             _goals.Add(simpleGoal);
         }
-        else if (GoalTypes == 1)
+        else if (typeOfGoal == 1)
         {
-           EternalGoal eternalGoal = new (name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalTypes[GoalTypes]);
+           EternalGoal eternalGoal = new (name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalTypes[typeOfGoal]);
            _goals.Add(eternalGoal);
         }
-        else if (GoalTypes == 2)
+        else if (typeOfGoal == 2)
         {
-            CheckListGoal checkListGoal = new(name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalTypes[GoalTypes], target: SetCheckListCount(), bonus: SetBonusPoint());
+            CheckListGoal checkListGoal = new(name: SetGoalName(), description: SetGoalDescription(), points: SetGoalPoint(), goal: goalTypes[typeOfGoal], target: SetCheckListCount(), bonus: SetBonusPoint());
             _goals.Add(checkListGoal);
         }
         else
@@ -125,7 +130,7 @@ public class GoalManager
     private void RecordEvent()
     {
         ListGoalNames();
-        Console.Write("\nWhich goal did you accomplished?: ");
+        Console.Write("\nWhich goal did you accomplished: ");
         int goalCompleteIndex = int.Parse(Console.ReadLine());
 
         Goal goalAccomplished = _goals[goalCompleteIndex - 1];
@@ -133,8 +138,8 @@ public class GoalManager
         goalAccomplished.RecordEvent();
         _score += goalAccomplished.GetCurrentPoint();
 
-        string congratulatoryMessage = $"\nCongratulations! You have earned {goalAccomplished.GetSetPoint()}\nYou now have {_score} points";
-        Console.WriteLine(congratulatoryMessage);
+        string congratMessage = $"\nCongratulations! You have earned {goalAccomplished.GetSetPoint()}\nYou now have {_score} points";
+        Console.WriteLine(congratMessage);
         DisplayPlayerPoint();
     }
 
@@ -147,6 +152,7 @@ public class GoalManager
     {
         Console.Write("\nWhat would you like to name the file? : ");
         string fileName = Console.ReadLine();
+
         using StreamWriter Goals = new($"{_folderPath}{fileName}.txt");
         Goals.WriteLine(_score);
         foreach (Goal goal in _goals)
@@ -171,14 +177,15 @@ public class GoalManager
             }
             _count = 0;
 
-            Console.Write("Choose the file to load listed above: ");
-            int choiceFile = int.Parse(Console.ReadLine());
-            string[] fileContent = File.ReadAllLines(files[choiceFile - 1]);
+            Console.Write("Choose the file to load (by it number): ");
+            int choosenFile = int.Parse(Console.ReadLine());
+            string[] fileContent = File.ReadAllLines(files[choosenFile - 1]);
 
             _goals.AddRange(ConvertToGoalObjects(fileContent));
         } 
-        else Console.WriteLine("There are no files saved in your Goals-Folder");
+        else Console.WriteLine("There are no files saved in your Saved-Folder");
     }
+
 
     private string SetGoalName()
     {
@@ -261,7 +268,7 @@ public class GoalManager
                 initialGoal.Add(checkListGoal);
             }
         }
-        Console.WriteLine("\nYour file is loaded Successfully");
+        Console.WriteLine("\nFile loaded Successfully");
         return initialGoal;
     }
 }

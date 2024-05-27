@@ -1,10 +1,12 @@
+using System;
+
 public class EternalGoal : Goal
 {
-    private string _GoalTypes;
+    private string _typeOfGoal;
 
     public EternalGoal(string name, string description, int points, string goal) : base(name, description, points)
     {
-        _GoalTypes = goal;
+        _typeOfGoal = goal;
     }
 
     public override void RecordEvent()
@@ -22,7 +24,7 @@ public class EternalGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return $"{_GoalTypes}: {_shortName} | {_description} | {_setPoints}";
+        return $"{_typeOfGoal}: {_shortName} | {_description} | {_setPoints}";
     }
 
 

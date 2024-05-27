@@ -1,11 +1,13 @@
+using System;
+
 public class SimpleGoal : Goal
 {
-    private string _GoalTypes;
+    private string _typeOfGoal;
     private bool _isComplete = false;
 
     public SimpleGoal(string name, string description, int points, string goal) : base(name, description, points)
     {
-        _GoalTypes = goal;
+        _typeOfGoal = goal;
     }
 
     public override void RecordEvent()
@@ -29,6 +31,6 @@ public class SimpleGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return $"{_GoalTypes}: {_shortName} | {_description} | {_setPoints} | {IsComplete()}";
+        return $"{_typeOfGoal}: {_shortName} | {_description} | {_setPoints} | {IsComplete()}";
     }
 }
