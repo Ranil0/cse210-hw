@@ -31,7 +31,7 @@ class Program
 
         Product Ranz801 = new Product("365 by Whole foods Market", "BlackBeans365", 1.29, 5);
         Product Ranz802 = new Product("Annie's Cheddar Bunnies (Pack of 12)", "CheddarA12", 8.49, 1);
-        Product Ranz803 = new Product("Poppi Root Beer", "RootBeerP", 2.22, 10);
+        Product Ranz803 = new Product("Poppi Root Beer", "RootBeerP", 2.25, 10);
 
         productsList2.Add(Ranz801);
         productsList2.Add(Ranz802);
