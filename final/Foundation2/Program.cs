@@ -42,7 +42,9 @@ class Program
         Order order2 = new Order(productsList2, customer2);
 
         Console.WriteLine("Order Number: 2");
+        Console.Write("///////////////////////////////////////////////////////////////////////////////////////\n");
         order2.DisplayResults();
+        Console.Write("///////////////////////////////////////////////////////////////////////////////////////\n");
         Console.WriteLine();
 
         //Order3
@@ -61,7 +63,9 @@ class Program
         Order order3 = new Order(productsList3, customer3);
 
         Console.WriteLine("Order Number: 3");
+        Console.Write("///////////////////////////////////////////////////////////////////////////////////////\n");
         order3.DisplayResults();
+        Console.Write("///////////////////////////////////////////////////////////////////////////////////////\n");
         Console.WriteLine();
         Console.ReadKey();
     }
