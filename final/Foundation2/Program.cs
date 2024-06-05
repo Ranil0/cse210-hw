@@ -19,7 +19,7 @@ class Program
         productsList1.Add(Ranz903);
 
         Order order1 = new Order(productsList1, customer1);
-
+        Console.WriteLine();
         Console.WriteLine("Order Number: 1");
         Console.Write("///////////////////////////////////////////////////////////////////////////////////////\n");
         order1.DisplayResults();
