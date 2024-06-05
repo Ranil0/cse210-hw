@@ -35,7 +35,7 @@ class Program
         videosList.Add(videoYoutube2);
 
         //Video3
-        Video videoYoutube3 = new Video("Pinoy Delicacies: A Mouth Watering Experince", "Crez Anne Labuyo", 752);
+        Video videoYoutube3 = new Video("Pinoy Delicacies: A Mouth Watering Experience", "Crez Anne Labuyo", 752);
 
         Comment videoYoutube3C1 = new Comment("Kim", "I love it, hoping to visit again next month, and taste again the delicious food that the country can offer.");
         Comment videoYoutube3C2 = new Comment("Jared", "You are captivating me on how you presented your contents, and the deffirent flavors you mentioned.");
@@ -52,6 +52,7 @@ class Program
             video.DisplayInfo();
             Console.WriteLine();
             Console.WriteLine();
+            Console.ReadKey();
         }
     }
 }
