@@ -50,7 +50,7 @@ class Program
 
         Product Ranz701 = new Product("365 Extra Virgin Olive Oil 1L", "OliveOil365", 8.99, 3);
         Product Ranz702 = new Product("Organic Vegetable Tray", "VegetableTray222", 6.99, 4);
-        Product Ranz703 = new Product("365 by Whole foods Market", "BlackBeans365", 1.29, 5);
+        Product Ranz703 = new Product("365 by Whole foods Market", "BlackBeans365", 1.29, 2);
 
         productsList3.Add(Ranz701);
         productsList3.Add(Ranz702);
@@ -61,5 +61,6 @@ class Program
         Console.WriteLine("Order Number: 3");
         order3.DisplayResults();
         Console.WriteLine();
+        Console.ReadKey();
     }
 }
