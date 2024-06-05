@@ -21,7 +21,7 @@ class Program
         Order order1 = new Order(productsList1, customer1);
 
         Console.WriteLine("Order Number: 1");
-        Console.Write("///////////////////////////////////////////////////////////////////////////////////////");
+        Console.Write("///////////////////////////////////////////////////////////////////////////////////////\n");
         order1.DisplayResults();
         Console.WriteLine();
 
